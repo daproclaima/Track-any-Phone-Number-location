@@ -1,18 +1,16 @@
 
 # Phone Number Location Tracker using Python 
 
-Are you curious about the location of a mobile number? Maybe you want to track a lost phone or keep tabs on your child's whereabouts. Whatever your reason, you can use Python to find the location of a mobile number.
+One of my friends recently went missing... So I tried to commit to the research efforts with what I know doing best: 
+coding.
+Thankfully we found him back alive. 
+This software will let you find the information of a phone number you provided. 
+It accepts the international format (`+<country-code>`, but not `00<country-code>` ). 
+Though, GPDR rules will not allow the third service this piece of code relies on to track the coordinates of a phone 
+without its owner consent (only authorities are allowed to request these information to phone operator companies). You
+will only find information about the operator company and its country.
 
-In this step-by-step guide, we'll show you how to track a mobile number's location using Python. You'll need some Python coding skills and access to a few geolocation libraries. Let's get started!
-
-To make this project only you need to follow this step:-
-
-
-
-
-
-
-
+This project is a fork of the repository of [Mohnaa Track-any-Phone-Number-location](https://github.com/Mohnaa/Track-any-Phone-Number-location/tree/Repositories).
 
 ## Installation
 
@@ -23,6 +21,8 @@ Install package with pip
   pip install folium
   pip install geocoder
   pip install opencage
+  pip install mechanize
+  pip install bs4
 ```
 
 Now need to collect Geocoder API Key from https://opencagedata.com/
@@ -39,58 +39,9 @@ Step3: From API Keys collect API key
 
 ![github3](https://user-images.githubusercontent.com/123636419/215339773-0171d38c-b9ad-490a-95d8-47366321048a.PNG)
 
-
-
-
-## Deployment
-
-To deploy this project run
-
+## Use
+To run the program, make:
 ```bash
-import phonenumbers
-from phonenumbers import geocoder
-from phonenumbers import carrier
-import opencage
-from opencage.geocoder import OpenCageGeocode
-import folium
-
-
-key = "your key" #Geocoder API Key need to paste here "your key" 
-number = input("please giver your number: ")
-new_number = phonenumbers.parse(number)
-location = geocoder.description_for_number(new_number, "en")
-print(location)
-
-service_name = carrier.name_for_number(new_number,"en")
-print(service_name)
-
-geocoder = OpenCageGeocode(key)
-query = str(location)
-result = geocoder.geocode(query)
-#print(result)
-
-lat = result[0]['geometry']['lat']
-lng = result[0]['geometry']['lng']
-
-print(lat,lng)
-
-my_map = folium.Map(location=[lat,lng], zoom_start=9)
-folium.Marker([lat, lng], popup= location).add_to(my_map)
-
-my_map.save("location.html")
-
-print("location tracking completed")
-print("Thank you")
+python main.py
 ```
-
-
-You can follow me
-
-Facebook:- https://www.facebook.com/problemsolvewithridoy/
-
-Linkedin:- https://www.linkedin.com/in/ridoyhossain/
-
-YouTube:- https://www.youtube.com/@problemsolvewithridoy
-
-If you have any confusion, please feel free to contact me. 
-Thank you
+To exit the program, type: `CTRL` + `D`

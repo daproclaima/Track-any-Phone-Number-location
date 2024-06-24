@@ -5,9 +5,10 @@ import opencage
 from opencage.geocoder import OpenCageGeocode
 import folium
 
+import pdb;
 
-key = "your key" #Geocoder API Key needs to paste here "your key" 
-number = input("please giver your number: ")
+key = "1be0734a67ee40c682b07390b8e81d2a" #Geocoder API Key needs to paste here "your key"
+number = input("please give your number: ")
 new_number = phonenumbers.parse(number)
 location = geocoder.description_for_number(new_number, "en")
 print(location)
@@ -18,10 +19,11 @@ print(service_name)
 geocoder = OpenCageGeocode(key)
 query = str(location)
 result = geocoder.geocode(query)
-#print(result)
 
 lat = result[0]['geometry']['lat']
 lng = result[0]['geometry']['lng']
+
+pdb.set_trace()
 
 print(lat,lng)
 
